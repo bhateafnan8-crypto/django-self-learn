@@ -1,0 +1,7 @@
+# Ignore .vscode by default
+.vscode/*
+
+# But selectively re-include team-useful files
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json   
