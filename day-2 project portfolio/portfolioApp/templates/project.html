@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+<!-- {% load static %} -->
+
+
+{% block title %}
+Projects
+{% endblock %}
+
+{% block content %}
+
+<h1>My Projects</h1>
+
+{% for project in projects %}
+        <p>{{ project }}</p>
+{% endfor %}
+
+{% endblock %}
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+
+    <h1>Project Page</h1>
+    <ul>
+        {% for project in context.projects %}
+            <li>project</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html> -->
