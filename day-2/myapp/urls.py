@@ -18,8 +18,15 @@ from django.contrib import admin
 from django.urls import path,include
 from myapp.views import home
 from myapp.views import about
+from myapp.views import data    
+from myapp.views import context    
+from myapp.views import portfolio
+    
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/',home),
     path('about/',about),
+    path('data/',data),
+    path('context/',context),
+    path('portfolio/',portfolio),
 ]
