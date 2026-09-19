@@ -1,0 +1,29 @@
+{% for ctx in context %}
+    {% if ctx.age > 18 %}
+        <p>you are eligible : {{ ctx.name }}</p>
+    {% else %}
+        <p>you are not eligible : {{ ctx.name }}</p>
+    {% endif %}
+{% endfor %}
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for ctx in context %}
+        {% if ctx.age > 18 %}
+            <p>you are eligible : {{ ctx.name }}</p>
+        {% else %}
+            <p>you are not eligible : {{ ctx.name }}</p>
+        {% endif %}
+    {% endfor %}
+</body>
+</html> -->

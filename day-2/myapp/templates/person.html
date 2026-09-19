@@ -1,0 +1,7 @@
+{% for user in users %}   
+   {% if user.age > 18 %}
+        <p>Hello , Adult -- ( {{ user.name }} )</p>
+    {% else %}
+        <p>Hello , Teenage -- ( {{ user.name }} )</p>
+    {% endif %}
+{% endfor %}

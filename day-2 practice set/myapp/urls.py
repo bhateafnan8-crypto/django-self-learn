@@ -1,5 +1,5 @@
 """
-URL configuration for myproject project.
+URL configuration for mysite project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.1/topics/http/urls/
@@ -17,32 +17,26 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from myapp.views import home
-from myapp.views import about
-from myapp.views import data    
-from myapp.views import context    
-from myapp.views import portfolio
-from myapp.views import person
+from myapp.views import username
+from myapp.views import validation
 from myapp.views import products
-from myapp.views import home1
-from myapp.views import about1
-from myapp.views import porfolio1
-from myapp.views import Context1
-from myapp.views import products1
-from myapp.views import index
-    
+from myapp.views import portfolio
+from myapp.views import about
+from myapp.views import contact
+from myapp.views import homes
+from myapp.views import abouts
+from myapp.views import contacts
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/',home),
-    path('about/',about),
-    path('data/',data),
-    path('context/',context),
-    path('portfolio/',portfolio),
-    path('person/',person),
-    path('products/',products),
-    path('home1/',home1),
-    path('about1/',about1),
-    path('products1/',products1),
-    path('Context1/',Context1),
-    path('porfolio1/',porfolio1),
-    path('index/',index),
+    path('',home,name='home'),
+    path('username/',username,name='username'),
+    path('validation/',validation,name='validation'),
+    path('products/',products,name='products'),
+    path('portfolio/',portfolio,name='portfolio'),
+    path('about/',about,name='about'),
+    path('contact/',contact,name='contact'),
+    path('homes/',homes,name='homes'),
+    path('abouts/',abouts,name='abouts'),
+    path('contacts/',contacts,name='contacts'),
 ]

@@ -34,3 +34,43 @@ def portfolio(request):
     }
 
     return render(request,'portfolio.html',context)
+
+def person(request):
+    users = [{
+        "name":"Adfar",
+        "age":20
+    },
+    {
+        "name":"Rasheed",
+        "age":19
+    },
+    {
+        "name":"Shahid",
+        "age":16
+    },
+    {
+        "name":"Amaan",
+        "age":15
+    }
+    ]
+
+    return render(request,'person.html',{"users":users})
+
+def products(request):
+    products_list = ["Mobile","Laptop","Charger","Keyboard","Tv"]
+
+    return render(request,'products.html',{"products":products_list})
+
+def home1(request):
+    return render(request,'home1.html')
+def about1(request):
+    return render(request,'about1.html')
+def Context1(request):
+    return render(request,'Context1.html') 
+def products1(request):
+    return render(request,'products1.html')
+def porfolio1(request):
+    return render(request,'porfolio1.html')
+
+def index(request):
+    return render(request,'index.html')
