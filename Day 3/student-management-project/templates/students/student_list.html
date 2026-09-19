@@ -1,0 +1,12 @@
+<h1>Student List</h1>
+
+{% for student in students %}
+    <div>
+        <h3>{{ student.name }}</h3>
+        <p>Email: {{ student.email }}</p>
+        <p>Age: {{ student.age }}</p>
+        <p>Course: {{ student.course }}</p>
+    </div>
+{% empty %}
+    <p>No students found.</p>
+{% endfor %}
