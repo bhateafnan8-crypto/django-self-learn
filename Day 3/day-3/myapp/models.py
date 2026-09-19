@@ -15,5 +15,5 @@ class User(models.Model):
     name = models.CharField(max_length=50)
     age = models.IntegerField()
     email = models.EmailField(unique=True)
-    is_paid = models.BooleanField(default=True)
+    is_paid = models.BooleanField(default=False)
     date_of_purchase = models.DateField(auto_now_add=True)

@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from myapp.views import create_user,show_user
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include("myapp.urls"))
+    path('create/', create_user, name='create_user'),
+    path('show/', show_user, name='show_user'),
+    # path('update/', update_user, name='update_user'),
+    # path('delete/', delete_user, name='delete_user'),
 ]
