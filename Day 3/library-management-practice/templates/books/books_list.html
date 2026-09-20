@@ -1,12 +1,37 @@
-<h1>Student List</h1>
+<h1>Book List</h1>
 
-{% for student in students %}
+{% for book in books %}
     <div>
-        <h3>{{ student.name }}</h3>
-        <p>Email: {{ student.email }}</p>
-        <p>Age: {{ student.age }}</p>
-        <p>Course: {{ student.course }}</p>
+        <h3>{{ book.title }}</h3>
+        <p>Author: {{ book.author }}</p>
+        <p>Price: {{ book.price }}</p>
+        <p>Published_date: {{ book.published_date }}</p>
+        <p>Available: {{ book.is_available }}</p>
     </div>
 {% empty %}
-    <p>No students found.</p>
+    <p>No Books found.</p>
+{% endfor %}
+
+{% for book in high_price_book %}
+    <div>
+        <h3>{{ book.title }}</h3>
+        <p>Author: {{ book.author }}</p>
+        <p>Price: {{ book.price }}</p>
+        <p>Published_date: {{ book.published_date }}</p>
+        <p>Available: {{ book.is_available }}</p>
+    </div>
+{% empty %}
+    <p>No Books found.</p>
+{% endfor %}
+
+{% for book in Django_title_book %}
+    <div>
+        <h3>{{ book.title }}</h3>
+        <p>Author: {{ book.author }}</p>
+        <p>Price: {{ book.price }}</p>
+        <p>Published_date: {{ book.published_date }}</p>
+        <p>Available: {{ book.is_available }}</p>
+    </div>
+{% empty %}
+    <p>No Books found.</p>
 {% endfor %}

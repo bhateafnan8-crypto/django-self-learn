@@ -17,9 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from books.views import show_Books
+from books.views import high_price_book
+from books.views import Django_title_book
+from books.views import update_price
+from books.views import delete_book
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',show_Books,name='show_Books'),
-    path('',show_Books,name='show_Books'),
+    path('highprice/',high_price_book,name='high_price_book'),
+    path('DjangoBook/',Django_title_book,name='Django_title_book'),
+    path('updateprice/',update_price,name='update_price'),
+    path('deletebook/',delete_book,name='delete_book'),
 ]
