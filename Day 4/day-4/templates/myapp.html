@@ -1,0 +1,21 @@
+<h1>Swami College Students:</h1>
+{% for student in students_list %}
+    <p>Name : {{ student.name }}</p>
+    <p>Age : {{ student.age }}</p>
+    <hr>
+{% empty %}
+    <p>Students Not Found</p>
+{% endfor %}
+
+
+
+<h1>Acharya College Students:</h1>
+{% for student in students_list_1 %}
+    <p>Name : {{ student.name }}</p>
+    <p>Email :{{ student.email }}</p>
+    <p>Gr_num :{{ student.gr_num }}</p>
+    <p>Is_pass :{{ student.is_pass }}</p>
+    <hr>
+{% empty %}
+    <p>students not found</p>   
+{% endfor %}
