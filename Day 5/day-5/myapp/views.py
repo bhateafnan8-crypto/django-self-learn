@@ -101,11 +101,13 @@ def job_create(request):
 
 # authentication - User
 
-# user = User.objects.create_user(username='john',email='john@ex.com',password='secrete123') 
-# User.objects.all()  # issue here these two lines create user multiple times thats why this occur"django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username""
+"""user = User.objects.create_user(username='john',email='john@ex.com',password='secrete123') 
+User.objects.all()  # issue here these two lines create user multiple times thats why this occur"django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username""
 
-# if not User.objects.filter(username='john').exists(): # these two lines right but not required here
-#     User.objects.create_user(username='john', email='john@ex.com', password='secrete123') 
+if not User.objects.filter(username='john').exists(): # these two lines right but not required here
+    User.objects.create_user(username='john', email='john@ex.com', password='secrete123') """
+
+# login
 def login_view(request):
 
     if request.method == "POST":
@@ -126,6 +128,12 @@ def login_view(request):
 
     return render(request,'login/login.html')
 
+# logout
 def logout_view(request):
     logout(request)
     return redirect("login_view") # here add the name='login_view' this attribute value which one is add at urls.py file.. but i was add login means the file name of html..
+
+# for login-requires 
+@login_required
+def dashboard(request):
+    return redirect(request,'dashboard/dashboard.html')

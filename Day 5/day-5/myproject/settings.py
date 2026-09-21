@@ -116,7 +116,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+LOGIN_URL = 'login_view'
+# LOGOUT_REDIRECT_URL = 'login_view' # in future can use .. reason(Since you're using a custom logout_view function (not Django's built-in class-based LogoutView), your existing return redirect("login_view") is sufficient — you don't need LOGOUT_REDIRECT_URL right now. Just add LOGIN_URL and you're set.) and (For logout: there's an equivalent setting, LOGOUT_REDIRECT_URL, which controls where Django sends the user after logout() runs — but you don't strictly need it, since your logout_view already does this manually:),(def logout_view(request):logout(request)return redirect("login_view")),(That redirect("login_view") already handles it explicitly. So you have two options:Keep it as is — your view already redirects correctly, no setting needed.Or centralize it — add to settings.py:),(LOGOUT_REDIRECT_URL = 'login_view'),(and then in your view you could just call logout(request) and let Django handle the redirect (only relevant if you switch to Django's built-in LogoutView later; your custom function-based view doesn't read this setting automatically).)
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
