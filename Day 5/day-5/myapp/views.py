@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from django.http import HttpResponse
 from myapp.forms import StudentForm,UserForm,CustomerbillForm,InvoiceForm,FeedbackForm,JobForm
 from myapp.models import Job,Invoice,Feedback
 from django.contrib.auth.models import User
@@ -148,3 +149,29 @@ def dashboard(request):
 
 def check_curr_user(request):
    return render(request,'curr_user/curr_user.html')
+
+# session
+
+def session(request):
+    request.session['username'] = "adfar"
+    username = request.session.get("username")
+    
+    if username:
+        return HttpResponse(f'Done/Username added to session successfully : {username}')
+    else:
+        return HttpResponse("Not Found!")
+    # if username is not None:
+    #     del request.session[username]
+    # return "Not Found!"
+
+# session visited count
+
+def visited(request):
+    # write
+    request.session['visited'] = True
+    request.session['count'] = request.session.get('count', 0) + 1
+
+    # read
+    count = request.session.get('count')
+
+    return HttpResponse(f"You've visited {count} times")
