@@ -67,7 +67,7 @@ class JobForm(forms.ModelForm):
 
 # mediaForm
 
-class StudentForm(forms.Form):
+class StudentsForm(forms.ModelForm):
 
     class Meta:
         model = Student

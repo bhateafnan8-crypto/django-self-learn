@@ -1,7 +1,7 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from myapp.views import student_create,user_create,customer_bill_create,invoice_create,job_create,login_view,logout_view,dashboard,check_curr_user,session,visited
+from myapp.views import student_create,user_create,customer_bill_create,invoice_create,job_create,login_view,logout_view,dashboard,check_curr_user,session,visited,students_create,stud_create,student_list
 
 urlpatterns = [
     path('',student_create,name='student_create'),
@@ -15,6 +15,9 @@ urlpatterns = [
     path('user/',check_curr_user,name='check_curr_user'),
     path('session/',session,name='session'),
     path('visited/',visited,name='visited'),
+    path('createstudent/',students_create,name='students_create'),
+    path('createstud/',stud_create,name='stud_create'),
+    path('studentlist/',student_list,name='student_list'),
 ]
 
 if settings.DEBUG:

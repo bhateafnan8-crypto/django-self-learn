@@ -1,10 +1,11 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from myapp.forms import StudentForm,UserForm,CustomerbillForm,InvoiceForm,FeedbackForm,JobForm,StudentForm
-from myapp.models import Job,Invoice,Feedback
+from myapp.forms import StudentForm,UserForm,CustomerbillForm,InvoiceForm,FeedbackForm,JobForm,StudentsForm
+from myapp.models import Job,Invoice,Feedback,Student
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 # Create your views here.
 
 # simple forms.Form
@@ -178,11 +179,11 @@ def visited(request):
 
 # media files
 
-def student_create(request):
+def students_create(request):
 
     if request.method == "POST":
 
-        form = StudentForm(
+        form = StudentsForm(
             request.POST,
             request.FILES
         )
@@ -191,5 +192,34 @@ def student_create(request):
             form.save()
 
     else:
-        form = StudentForm()
+        form = StudentsForm()
     return render(request,'students/students.html',{'form':form})
+
+# django messages + redirect to page
+
+def stud_create(request):
+    if request.method == "POST":
+
+        form = StudentsForm(
+            request.POST,
+            request.FILES
+        )
+
+        if form.is_valid():
+            form.save()
+
+            messages.success(
+                request,
+                "Student created successfully"
+            )
+
+            return redirect('student_list')
+    else:
+        form = StudentsForm()
+    return render(request,'students/students.html',{'form':form})
+
+        
+def student_list(request):
+    studs = Student.objects.all()
+
+    return render(request,'messages/messages.html',{'studs':studs})
