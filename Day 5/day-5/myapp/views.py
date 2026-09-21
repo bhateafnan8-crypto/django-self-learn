@@ -101,10 +101,11 @@ def job_create(request):
 
 # authentication - User
 
-user = User.objects.create_user(username='john',email='john@ex.com',password='secrete123') 
-User.objects.all()
+# user = User.objects.create_user(username='john',email='john@ex.com',password='secrete123') 
+# User.objects.all()  # issue here these two lines create user multiple times thats why this occur"django.db.utils.IntegrityError: UNIQUE constraint failed: auth_user.username""
 
-
+# if not User.objects.filter(username='john').exists(): # these two lines right but not required here
+#     User.objects.create_user(username='john', email='john@ex.com', password='secrete123') 
 def login_view(request):
 
     if request.method == "POST":
