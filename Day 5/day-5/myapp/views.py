@@ -134,6 +134,11 @@ def logout_view(request):
     return redirect("login_view") # here add the name='login_view' this attribute value which one is add at urls.py file.. but i was add login means the file name of html..
 
 # for login-requires 
+
 @login_required
 def dashboard(request):
-    return redirect(request,'dashboard/dashboard.html')
+    return render(request,'dashboard/dashboard.html') 
+
+# @login_required
+# def dashboard(request):
+#     return redirect(request,'dashboard/dashboard.html') # here want to render but do redirect .. redirect means if action perform got to that url and open that url.. render means return to html file..
