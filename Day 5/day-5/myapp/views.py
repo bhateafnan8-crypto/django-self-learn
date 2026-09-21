@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from myapp.forms import StudentForm,UserForm,CustomerbillForm,InvoiceForm,FeedbackForm,JobForm
+from myapp.forms import StudentForm,UserForm,CustomerbillForm,InvoiceForm,FeedbackForm,JobForm,StudentForm
 from myapp.models import Job,Invoice,Feedback
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
@@ -155,7 +155,7 @@ def check_curr_user(request):
 def session(request):
     request.session['username'] = "adfar"
     username = request.session.get("username")
-    
+
     if username:
         return HttpResponse(f'Done/Username added to session successfully : {username}')
     else:
@@ -175,3 +175,21 @@ def visited(request):
     count = request.session.get('count')
 
     return HttpResponse(f"You've visited {count} times")
+
+# media files
+
+def student_create(request):
+
+    if request.method == "POST":
+
+        form = StudentForm(
+            request.POST,
+            request.FILES
+        )
+
+        if form.is_valid():
+            form.save()
+
+    else:
+        form = StudentForm()
+    return render(request,'students/students.html',{'form':form})

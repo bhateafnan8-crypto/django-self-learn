@@ -22,3 +22,9 @@ class Job(models.Model):
     type = models.CharField(max_length=50)
     cgpa = models.DecimalField(max_digits=5,decimal_places=2)
     experience = models.CharField(max_length=50)
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    photo = models.ImageField(
+        upload_to="students/"
+    )

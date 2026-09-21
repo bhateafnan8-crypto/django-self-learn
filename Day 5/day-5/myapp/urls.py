@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from myapp.views import student_create,user_create,customer_bill_create,invoice_create,job_create,login_view,logout_view,dashboard,check_curr_user,session,visited
 
 urlpatterns = [
@@ -14,3 +16,9 @@ urlpatterns = [
     path('session/',session,name='session'),
     path('visited/',visited,name='visited'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    )

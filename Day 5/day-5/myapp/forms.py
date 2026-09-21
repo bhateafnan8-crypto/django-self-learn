@@ -1,5 +1,5 @@
 from django import forms
-from myapp.models import Invoice,Feedback,Job
+from myapp.models import Invoice,Feedback,Job,Student
 
 # simple way
 class StudentForm(forms.Form):
@@ -64,3 +64,11 @@ class JobForm(forms.ModelForm):
     class Meta:
         model = Job
         fields = ['name','type','cgpa','experience']
+
+# mediaForm
+
+class StudentForm(forms.Form):
+
+    class Meta:
+        model = Student
+        fields = ['name','photo']
