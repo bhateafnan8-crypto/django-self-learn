@@ -14,4 +14,11 @@ class Feedback(models.Model):
     email = models.EmailField()
     subject = models.CharField(max_length=100)
     message = models.TextField(max_length=200)
-    rating = models.IntegerField(max_length=5, default=False)
+    rating = models.IntegerField(default=0)
+
+
+class Job(models.Model):
+    name = models.CharField(max_length=50)
+    type = models.CharField(max_length=50)
+    cgpa = models.DecimalField(max_digits=5,decimal_places=2)
+    experience = models.CharField(max_length=50)

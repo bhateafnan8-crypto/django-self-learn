@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from myapp.forms import StudentForm,UserForm,CustomerbillForm,InvoiceForm,FeedbackForm
+from myapp.forms import StudentForm,UserForm,CustomerbillForm,InvoiceForm,FeedbackForm,JobForm
+from myapp.models import Job,Invoice,Feedback
 # Create your views here.
 
 # simple forms.Form
@@ -62,4 +63,37 @@ def feedback_create(request):
         form = FeedbackForm()
 
     return render(request,'Feedback/feedback.html',{'form':form})
+
+
+# ModelForm.. editing/Updating an existing object
+
+def job_create(request):
+
+    jobs, _ = Job.objects.get_or_create(id=1,defaults={'name': '', 'type': '', 'cgpa': 0, 'experience': ''}) # in before i have wrote this inside the if block , and access it an else block means it should in globally scope but i had do as block scop. not exist or.. exact error "cannot access local variable 'jobs' where it is not associated with a value",
+
+    if request.method == "POST":
+
+        # form = JobForm(request.POST) # this one will be overwrite from below so it not required because i want to update the form in an existing object
+        # jobs = Job.objects.get(id=1) # this one will be give error because there is no data exist in db so want to add default values and use getorcreate for if not get so first create and update
+
+        
+        form = JobForm(
+            request.POST,
+            instance=jobs
+        )
+
+
+        if form.is_valid():
+            form.save()
+
+    else:
+        form = JobForm(instance=jobs)
+
+        # form = JobForm() this one is not wrong but here also want for update . means it will create without updating but want to update so use instance=jobs here also..
+
+
+
+    return render(request,'Job/job.html',{'form':form})
+
+
     

@@ -1,5 +1,5 @@
 from django import forms
-from myapp.models import Invoice,Feedback
+from myapp.models import Invoice,Feedback,Job
 
 # simple way
 class StudentForm(forms.Form):
@@ -55,3 +55,12 @@ class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
         fields =["name","email","subject","message","rating"]
+
+
+# ModelForm.. editing/Updating an existing object
+
+class JobForm(forms.ModelForm):
+
+    class Meta:
+        model = Job
+        fields = ['name','type','cgpa','experience']
