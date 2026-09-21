@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from myapp.forms import StudentForm,UserForm,CustomerbillForm,InvoiceForm,FeedbackForm,JobForm
 from myapp.models import Job,Invoice,Feedback
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 # simple forms.Form
@@ -96,4 +99,30 @@ def job_create(request):
     return render(request,'Job/job.html',{'form':form})
 
 
-    
+# authentication - User
+
+user = User.objects.create_user(username='john',email='john@ex.com',password='secrete123') 
+User.objects.all()
+
+
+def login_view(request):
+
+    if request.method == "POST":
+
+        username = request.POST ["username"]
+        password = request.POST ["password"] 
+
+        user = authenticate(
+            request,
+            username = username,
+            password = password
+        )
+
+        if user is not None:
+            login(request,user)
+
+    return render(request,'login/login.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect("login")
