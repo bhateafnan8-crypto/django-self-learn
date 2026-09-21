@@ -121,9 +121,11 @@ def login_view(request):
 
         if user is not None:
             login(request,user)
+  
+
 
     return render(request,'login/login.html')
 
 def logout_view(request):
     logout(request)
-    return redirect("login")
+    return redirect("login_view") # here add the name='login_view' this attribute value which one is add at urls.py file.. but i was add login means the file name of html..
