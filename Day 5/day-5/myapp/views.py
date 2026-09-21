@@ -142,3 +142,9 @@ def dashboard(request):
 # @login_required
 # def dashboard(request):
 #     return redirect(request,'dashboard/dashboard.html') # here want to render but do redirect .. redirect means if action perform got to that url and open that url.. render means return to html file..
+
+
+# Checking Current User
+
+def check_curr_user(request):
+   return render(request,'curr_user/curr_user.html')

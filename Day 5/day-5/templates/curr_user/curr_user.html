@@ -1,0 +1,11 @@
+{% if user.is_authenticated %}
+    <h1>Hi, {{ user.username }}</h1> 
+    <p>Welcome to Home Page</p>   
+{% else %}
+    <p>Please login first</p>
+    <a href="{% url 'login_view' %}">Login</a> 
+    <!-- always use add views_name in '' invertedcomma, this view is your urls.py attribute in url routing time, and set at settings.py as LOGIN_URL = 'login_view' -->
+
+
+    <!-- <a href="login/login.html">Login</a>   #Since the browser is at /curruser/, a relative link like login/login.html resolves to /curruser/login/login.html — which doesn't exist. You don't have a URL pattern for that, and you're also not supposed to link directly to an .html file — Django serves views, not template files, through URLs. -->
+{% endif %}
