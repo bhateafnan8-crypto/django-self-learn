@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2>Welcome, {{ request.user.username }}</h2>
+
+<div class="dashboard-stats">
+    <p>Total students: <strong>{{ student_count }}</strong></p>
+</div>
+
+<div class="dashboard-actions">
+    <a class="btn" href="{% url 'studentform' %}">Add New Student</a>
+    <a class="btn" href="{% url 'stdshow' %}">View All Students</a>
+</div>
+
+<h3>Recently Added</h3>
+{% if recent_students %}
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Course</th>
+        <th>Email</th>
+    </tr>
+    {% for student in recent_students %}
+    <tr>
+        <td>{{ student.name }}</td>
+        <td>{{ student.course|default:"—" }}</td>
+        <td>{{ student.email }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p class="empty-state">No students added yet.</p>
+{% endif %}
+{% endblock %}

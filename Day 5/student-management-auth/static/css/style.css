@@ -1,0 +1,158 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+    line-height: 1.5;
+}
+
+header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.3rem;
+}
+
+header nav a {
+    color: #ecf0f1;
+    text-decoration: none;
+    margin-left: 16px;
+    font-size: 0.95rem;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 800px;
+    margin: 32px auto;
+    padding: 24px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+h2 {
+    margin-bottom: 16px;
+    color: #2c3e50;
+}
+
+h3 {
+    margin: 20px 0 10px;
+    color: #34495e;
+}
+
+form p {
+    margin-bottom: 14px;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+button, .btn {
+    display: inline-block;
+    background: #2980b9;
+    color: #fff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 6px;
+}
+
+button:hover, .btn:hover {
+    background: #21618c;
+}
+
+.btn-danger {
+    background: #c0392b;
+}
+
+.btn-danger:hover {
+    background: #922b21;
+}
+
+.messages {
+    list-style: none;
+    margin-bottom: 16px;
+}
+
+.messages li {
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.messages .success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.messages .error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+th {
+    background: #f0f2f5;
+}
+
+.actions a {
+    margin-right: 10px;
+    font-size: 0.85rem;
+}
+
+.dashboard-stats {
+    background: #ecf6fc;
+    padding: 14px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.dashboard-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.empty-state {
+    color: #888;
+    font-style: italic;
+}

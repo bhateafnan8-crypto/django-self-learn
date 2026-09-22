@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Students{% endblock %}
+{% block content %}
+<h2>My Students</h2>
+
+<a class="btn" href="{% url 'studentform' %}">+ Add New Student</a>
+
+{% if std_list %}
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Age</th>
+        <th>Course</th>
+        <th>Actions</th>
+    </tr>
+    {% for student in std_list %}
+    <tr>
+        <td>{{ student.name }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.phone|default:"—" }}</td>
+        <td>{{ student.age|default:"—" }}</td>
+        <td>{{ student.course|default:"—" }}</td>
+        <td class="actions">
+            <a href="{% url 'stdupdate' student.pk %}">Edit</a>
+            <a href="{% url 'stddelete' student.pk %}" style="color:#c0392b;">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p class="empty-state" style="margin-top:14px;">No students yet. Add your first one above.</p>
+{% endif %}
+{% endblock %}
