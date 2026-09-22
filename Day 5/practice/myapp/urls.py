@@ -1,5 +1,7 @@
 from django.urls import path
-from myapp.views import create_user,create_std,show_std,login_view,logout_view,dashboard
+from django.conf import settings
+from django.conf.urls.static import static
+from myapp.views import create_user,create_std,show_std,login_view,logout_view,dashboard,Image_view,Image_show
 
 
 urlpatterns = [
@@ -9,4 +11,12 @@ urlpatterns = [
     path('login/',login_view,name='login_view'),
     path('logout/',logout_view,name='logout_view'),
     path('dashboard/',dashboard,name='dashboard'),
+    path('imageview/',Image_view,name='image_view'),
+    path('imageshow/',Image_show,name='image_show'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    )

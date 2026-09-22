@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from myapp.forms import UserForm,StudentForm
-from myapp.models import Student
+from myapp.forms import UserForm,StudentForm,ImageForm
+from myapp.models import Student,Image
 from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -79,3 +79,26 @@ def logout_view(request):
 @login_required
 def dashboard(request):
     return render(request,'dashboard/dashboard.html',)
+
+def Image_view(request):
+
+    if request.method == "POST":
+
+        form = ImageForm(request.POST,request.FILES)
+
+        if form.is_valid():
+            form.save()
+
+            messages.success(request,"Profile created successfully")
+
+            return redirect('image_show')
+
+    else:
+        form = ImageForm()
+
+    return render(request,'profile/profile.html',{'form':form})
+
+def Image_show(request):
+    profs = Image.objects.all()
+
+    return render(request,'profile/profile_list.html',{'profs':profs})

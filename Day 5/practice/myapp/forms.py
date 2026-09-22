@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from myapp.models import Student
+from myapp.models import Student,Image
 
 class UserForm(forms.Form):
     name = forms.CharField(max_length=100)
@@ -27,3 +27,10 @@ class StudentForm(forms.ModelForm):
 
         model = Student
         fields = ['name','email','age','course']
+
+class ImageForm(forms.ModelForm):
+
+    class Meta:
+
+        model = Image
+        fields = ['name','profile_picture']

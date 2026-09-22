@@ -1,0 +1,24 @@
+{% if messages %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Photo</th>
+    </tr>
+    {% for prof in profs %}
+    <tr>
+        <td>{{ prof.name }}</td>
+        <td>
+            {% if prof.profile_picture %}
+                <img src="{{ prof.profile_picture.url }}" width="80">
+            {% endif %}
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="2">No students found.</td></tr>
+    {% endfor %}
+</table>
