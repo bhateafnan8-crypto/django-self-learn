@@ -1,0 +1,8 @@
+{% for std in std %}
+    <p>Name : {{ std.name }}</p>
+    <p>Email : {{ std.email }}</p>
+    <p>Age : {{ std.age }}</p>
+    <p>Course : {{ std.course }}</p>
+{% empty %}
+    <p>Student Not Found</p>
+{% endfor %}
