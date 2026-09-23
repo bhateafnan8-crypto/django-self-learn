@@ -9,7 +9,7 @@ from django.contrib.auth import views
 
 urlpatterns = [
     # path('',login_view,name="login_view"),
-    # path('createuser/',create_user,name="create_user"),
+    path('createuser/',create_user,name="create_user"),
     # path('logout/',logout_view,name="logout_view"),
     path('showuser/',show_user,name="show_user"),
     path('home/',home,name="home"),
