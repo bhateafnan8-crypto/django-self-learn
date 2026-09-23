@@ -118,7 +118,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
-LOGIN_URL = 'login_view'
+LOGIN_URL = 'login_view'                    # note: update this to match if using built-in login as your entry point
+LOGIN_REDIRECT_URL = 'show_user'       # where LoginView sends user after success
+LOGOUT_REDIRECT_URL = 'login_view'          # where LogoutView sends user after logout
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
