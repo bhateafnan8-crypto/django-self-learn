@@ -1,0 +1,6 @@
+<p>Dashboard:</p>
+<h1>Hello, Welcome {{ request.user.username }}</h1>
+<form method="post" action="{% url 'logout_view' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>

@@ -1,0 +1,14 @@
+{% if messages %}
+  {% for message in messages %}
+    <p style="color:red">{{ message }}</p>
+  {% endfor %}
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+
+    <input type="text" name="username" placeholder="username">
+    <input type="password" name="password" placeholder="password">
+    <button type="submit">Login</button>
+</form>
+<p>New here? <a href="{% url 'create_user' %}">Sign up</a></p>
