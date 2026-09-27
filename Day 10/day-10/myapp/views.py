@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view,permission_classes
 from rest_framework.views import APIView
-from rest_framework.generics import get_object_or_404,ListCreateAPIView
+from rest_framework.generics import get_object_or_404,ListCreateAPIView,RetrieveUpdateDestroyAPIView
 # from rest_framework.serializers import Serializer
 from rest_framework.response import Response
-from rest_framework.permissions import IsAdminUser,IsAuthenticated,IsAuthenticatedOrReadOnly,AllowAny
+from rest_framework.permissions import IsAdminUser,IsAuthenticated,IsAuthenticatedOrReadOnly,AllowAny,BasePermission
 from rest_framework import status
 from rest_framework import serializers
 from rest_framework.viewsets import ModelViewSet
@@ -67,3 +67,42 @@ class User_modelViewset_permView(ModelViewSet):
     serializer_class = UserSerializer
 
     permission_classes = [IsAuthenticated]
+
+class UserViewSet(ModelViewSet):
+
+    queryset = User.objects.all()
+
+    serializer_class = UserSerializer
+
+    def get_permission(self):
+        if self.action == "view":
+
+            permission_classes = [AllowAny] 
+
+        elif self.action == "create":
+
+            permission_classes = [IsAuthenticated]
+
+        elif self.action == "destroy":
+
+            permission_classes = [IsAdminUser]
+
+        else:
+
+            permission_classes = [IsAuthenticated]
+
+        return [permission() for permission in permission_classes]
+
+
+class IsOwner(BasePermission):
+
+    def has_object_permission(self, request, view, obj):
+        return obj.user == request.user
+
+class UserDetailView(RetrieveUpdateDestroyAPIView):
+
+    queryset = User.objects.all()
+
+    serializer_class = UserSerializer
+
+    permission_classes = [IsAuthenticated,IsOwner]
