@@ -1,6 +1,24 @@
-from django.shortcuts import render
-
+from django.shortcuts import render,redirect,get_object_or_404
+from .models import TweetModel
+from .forms import TweetForm
 # Create your views here.
 
 def home(request):
     return render(request,'home.html')
+
+def tweet_list(request):
+    tweets = TweetModel.objects.all()
+
+    return render(request,'tweet_list.html',{'tweets':tweets})
+
+def tweet_create(request):
+    if request.method == "POST":
+        form = TweetForm(request,request.FILES,user = request.user)
+        if form.is_valid():
+            tweet = form.save(commit=False)
+            user = form
+            
+    else:
+        form = TweetForm()
+        return redirect('tweet_list')
+    return render(request,'tweet_form.html',{'form':form})
