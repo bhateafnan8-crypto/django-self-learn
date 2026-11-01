@@ -18,11 +18,11 @@ def tweet_list(request):
 @login_required
 def tweet_create(request):
     if request.method == "POST":
-        form = TweetForm(request,request.FILES)
+        form = TweetForm(request.POST,request.FILES)
         if form.is_valid():
             tweet = form.save(commit=False)
             tweet.user = request.user
-            form.save()
+            tweet.save()
             return redirect('tweet_list')
     else:
         form = TweetForm()
@@ -37,7 +37,7 @@ def tweet_edit(request,tweet_id):
         if form.is_valid():
             tweet = form.save(commit=False)
             tweet.user = request.user
-            form.save()
+            tweet.save()
             return redirect('tweet_list')
     else:
         form = TweetForm(instance=tweet)
@@ -63,7 +63,7 @@ def register(request):
            user.save()
            login(request,user)
         return redirect('tweet_list')
-    else:
+    else:   
         form = UserRegistrationForm()
 
-    return render(request,'registeration/register.html',{'form':form})
+    return render(request,'registration/register.html',{'form':form})
