@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+Tweet Post
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center mt-4">Welcome to Tweet Post</h1>
+
+<form  method="post">
+    <button href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger" type="submit">Delete</button>
+    <button href="{% url 'tweet_list' %}" class="btn btn-secondary" type="submit">Cancel</button>
+</form>
+{% endblock %}
