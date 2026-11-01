@@ -7,7 +7,7 @@ Tweet Post
 {% block content %}
 <h1 class="text-center mt-4">Welcome to Tweet Post</h1>
 
-<a class="btn btn-primary " href="{% url 'tweet_create' %}">Create a post</a>
+<a class="btn btn-primary mb-4" href="{% url 'tweet_create' %}">Create a post</a>
 
 <div class="container row gap-3">
 
@@ -17,8 +17,11 @@ Tweet Post
         <div class="card-body">
             <h4 class="card-title">{{tweet.user.username}}</h4>
             <p class="card-text">{{tweet.text}}</p>
-            <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
-            <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
+
+            {% if tweet.user == user %}
+                <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
+            {% endif %}
         </div>
     </section>
     {% endfor %}

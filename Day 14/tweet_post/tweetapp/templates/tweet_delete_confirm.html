@@ -5,10 +5,12 @@ Tweet Post
 {% endblock %}
 
 {% block content %}
-<h1 class="text-center mt-4">Welcome to Tweet Post</h1>
+<h1 class="text-center mt-4">Are you sure that you want to delete the Post</h1>
 
 <form  method="post">
-    <button href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger" type="submit">Delete</button>
-    <button href="{% url 'tweet_list' %}" class="btn btn-secondary" type="submit">Cancel</button>
+
+    {% csrf_token %}
+    <button  class="btn btn-danger" type="submit">Delete</button>
+    <a href="{% url 'tweet_list' %}" class="btn btn-success" >Cancel</a>
 </form>
 {% endblock %}

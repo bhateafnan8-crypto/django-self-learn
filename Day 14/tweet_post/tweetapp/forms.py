@@ -1,7 +1,7 @@
 from django import forms
 from .models import TweetModel
 from django.contrib.auth.forms import UserCreationForm
-
+from django.contrib.auth.models import User
 class TweetForm(forms.ModelForm):
 
     class Meta:
@@ -14,6 +14,6 @@ class UserRegistrationForm(UserCreationForm):
 
     class Meta:
 
-        model = TweetModel
+        model = User
         fields = ('username','email','password1','password2')
         

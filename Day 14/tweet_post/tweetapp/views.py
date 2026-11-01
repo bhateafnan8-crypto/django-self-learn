@@ -57,9 +57,13 @@ def tweet_delete(request,tweet_id):
 def register(request):
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
-        # form.is_valid():
-        #     form.save()
+        if form.is_valid():
+           user =  form.save(commit=False)
+           user.set_password(form.cleaned_data['password1'])
+           user.save()
+           login(request,user)
+        return redirect('tweet_list')
     else:
         form = UserRegistrationForm()
 
-    return render(request,'register/',{'form':form})
+    return render(request,'registeration/register.html',{'form':form})
