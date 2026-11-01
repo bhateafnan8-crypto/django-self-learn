@@ -13,14 +13,17 @@ Tweet Post
 
     {% for tweet in tweets %}
     <section class="card" style="max-width: 320px">
-        <img src="{{tweet.photo.url}}" class="card-img-top">
+        {% if tweet.photo %}
+        <img src="{{ tweet.photo.url }}" class="card-img-top" alt="Tweet image">
+        {% endif %}
+        <!-- <img src="{{tweet.photo.url}}" class="card-img-top"> -->
         <div class="card-body">
             <h4 class="card-title">{{tweet.user.username}}</h4>
             <p class="card-text">{{tweet.text}}</p>
 
             {% if tweet.user == user %}
-                <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
-                <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
             {% endif %}
         </div>
     </section>
