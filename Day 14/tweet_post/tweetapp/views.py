@@ -22,3 +22,20 @@ def tweet_create(request):
     else:
         form = TweetForm()
     return render(request,'tweet_form.html',{'form':form})
+
+def tweet_edit(request,tweet_id):
+    if request.method == "POST":
+        form = TweetForm(instance=True,pk=tweet_id)
+        if form.is_valid():
+            form.save()
+            return redirect('tweet_list')
+
+    else:
+        form = TweetForm()
+
+    return render(request,'tweet_form.html',{'form':form})
+
+def tweet_delete(request):
+    tweet = TweetModel.objects.all()
+    if request.method == "POST":
+        tweet.delete()
