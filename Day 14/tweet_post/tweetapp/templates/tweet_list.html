@@ -9,26 +9,32 @@ Tweet Post
 
 <a class="btn btn-primary mb-4" href="{% url 'tweet_create' %}">Create a post</a>
 
-<div class="container row gap-3">
+<div class="container">
+    <div class="row g-3">
+        {% for tweet in tweets %}
+        <div class="col-12 col-sm-6 col-lg-4">
+            <section class="card tweet-card h-100">
+                {% if tweet.photo %}
+                <img src="{{ tweet.photo.url }}" class="card-img-top tweet-image" alt="Tweet image">
+                {% else %}
+                <div class="tweet-image tweet-image-placeholder"></div>
+                {% endif %}
 
-    {% for tweet in tweets %}
-    <section class="card" style="max-width: 320px">
-        {% if tweet.photo %}
-        <img src="{{ tweet.photo.url }}" class="card-img-top" alt="Tweet image">
-        {% endif %}
-        <!-- <img src="{{tweet.photo.url}}" class="card-img-top"> -->
-        <div class="card-body">
-            <h4 class="card-title">{{tweet.user.username}}</h4>
-            <p class="card-text">{{tweet.text}}</p>
+                <div class="card-body d-flex flex-column">
+                    <h4 class="card-title">{{ tweet.user.username }}</h4>
+                    <p class="card-text tweet-text">{{ tweet.text }}</p>
 
-            {% if tweet.user == user %}
-            <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
-            <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
-            {% endif %}
+                    {% if tweet.user == user %}
+                    <div class="mt-auto">
+                        <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </section>
         </div>
-    </section>
-    {% endfor %}
-
+        {% endfor %}
+    </div>
 </div>
 
 
