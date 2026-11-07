@@ -7,3 +7,4 @@ def home(request):
 
 def reciepe(request):
     return render(request,'reciepe_list.html')
+
