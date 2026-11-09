@@ -14,10 +14,17 @@
 </head>
 
 <body>
-    <nav class="">
+    <nav class="d-flex justify-content-between bg-muted-info dvw-100">
     <h3>Recpies</h3>
+    <div class="link">
     <a href="{% url 'home' %}" class="">Home</a>
     <a href="{% url 'reciepe_list' %}">Recipes</a>
+
+    </div>
+    <form class="">
+        <input type="text" placeholder="Searh Reciepe" class="">
+        <a href="" class="btn">Searh</a>
+    </form>
     </nav>
     {% block content %}
     {% endblock %}
