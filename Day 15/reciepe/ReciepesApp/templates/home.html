@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p>Home Page...</p>
+    <h1 class="">Welcome to Reciepe Book...</h1>
+    <div class="">
+        <a href="{% url 'reciepe_list' %}" class="btn btn-success">List of reciepes</a>
+        <a href="{% url 'create_reciepe' %}" class="btn btn-success">Create your reciepe</a>
+    </div>
 {% endblock %}
