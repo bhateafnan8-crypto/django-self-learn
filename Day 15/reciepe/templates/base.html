@@ -21,14 +21,14 @@
 
 <body class="d-flex flex-column">
 
-    <nav class="navbar bg-body-tertiary border-bottom px-3">
+    <nav class="navbar bg-body-tertiary border-bottom px-3 py-8">
         <div class="container-fluid">
             
-            <div class="d-flex gap-3">
+            <div class="d-flex gap-3 align-items-center">
+                <a class="navbar-brand fw-bold text-sm" href="{% url 'home' %}">Recipes</a>
                 <a href="{% url 'home' %}" class="nav-link">Home</a>
                 <a href="{% url 'reciepe_list' %}" class="nav-link">Recipes</a>
             </div>
-            <a class="navbar-brand fw-bold text-sm" href="{% url 'home' %}">Recipes</a>
 
             <form class="d-flex gap-2" role="search" method="get" action="">
                 <input type="search" name="q" placeholder="Search recipe" class="form-control">

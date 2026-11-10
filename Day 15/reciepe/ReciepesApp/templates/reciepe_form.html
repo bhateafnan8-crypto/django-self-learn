@@ -1,24 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<p>Reciepe Creation Form:</p>
-<form method="post" enctype="multipart/form-data" class="d-flex flex-column justify-content-center w-50 align-items-center">
-
-
+<form method="post" enctype="multipart/form-data" class="col-6 mx-auto card p-3 shadow-lg mt-4">
     {% csrf_token %}
+    
+    <p class="text-center">Reciepe Creation Form</p>
 
 
+    <div class="mb-3">
     <label for="exampleFormControlInput" class="form-label mb-2">Reciepe Name:</label>
-    <input type="text" class="form-control mb-2" id="exampleFormControlInput" placeholder="Pudding">
+    <input type="text" name="reciepe_name" class="form-control"  id="exampleFormControlInput" placeholder="Pudding">
+    </div>
 
+    <div class="mb-3">
 
     <label for="exampleFormControlInput" class="form-label mb-2">Reciepe Description:</label>
-    <textarea type="text" class="form-control mb-2" id="exampleFormControlInput" placeholder="Pudding"></textarea>
+    <textarea type="text" name="reciepe_description" class="form-control " id="exampleFormControlInput" placeholder="Pudding"></textarea>
+    </div>
 
+    <div class="mb-3">
 
     <label for="exampleFormControlInput" class="form-label mb-2">Reciepe Image:</label>
-    <input type="image" class="form-control mb-2" id="exampleFormControlInput" placeholder="Select Image">
+    <input type="file" name="reciepe_image" class="form-control " id="exampleFormControlInput" placeholder="Select Image">
+    </div>
 
-    <button class="btn btn-success">Create Reciepe</button>
+    <button class="btn btn-success" type="submit">Create Reciepe</button>
 </form>
 {% endblock %}
