@@ -35,7 +35,7 @@ def edit_reciepe(request,id):
         data = request.POST
         reciepe_name = data.get('reciepe_name')
         reciepe_description = data.get('reciepe_description')
-        reciepe_image = data.FILES.get('reciepe_image')
+        reciepe_image = request.FILES.get('reciepe_image')
 
         queryset.reciepe_name = reciepe_name
         queryset.reciepe_description = reciepe_description

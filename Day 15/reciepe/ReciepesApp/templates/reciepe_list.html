@@ -1,5 +1,39 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
+{% block title %}
+Tweet Post
+{% endblock %}
 
 {% block content %}
-    <p>Recipes appear here:</p>
+<h1 class="text-center mt-4">Welcome to Reciepe Page</h1>
+
+<a class="btn btn-primary mb-4" href="{% url 'create_reciepe' %}">Create Reciepe</a>
+
+<div class="container">
+    <div class="row g-3">
+        {% for reciepe in queryset %}
+        <div class="col-12 col-sm-6 col-lg-4">
+            <section class="card tweet-card h-100">
+                {% if reciepe.reciepe_image %}
+                <img src="{{ reciepe.reciepe_image.url }}" class="card-img-top tweet-image" alt="Tweet image">
+                {% else %}
+                <div class="reciepe_image reciepe_image-placeholder"></div>
+                {% endif %}
+
+                <div class="card-body d-flex flex-column">
+                    <h4 class="card-title">{{ reciepe.reciepe_name}}</h4>
+                    <p class="card-text tweet-text">{{ reciepe.reciepe_description }}</p>
+
+                    <div class="mt-auto">
+                        <a href="{% url 'edit_reciepe' reciepe.id %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'delete_reciepe' reciepe.id %}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
 {% endblock %}
