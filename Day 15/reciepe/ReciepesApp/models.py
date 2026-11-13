@@ -4,6 +4,6 @@ from django.db import models
 
 class RecipesModel(models.Model):
     reciepe_name = models.CharField()
-    reciepe_desc = models.TextField()
-    reciepe_img = models.ImageField(upload_to='reciepe_images')
+    reciepe_description = models.TextField()
+    reciepe_image = models.ImageField(upload_to='reciepe_images')
     
